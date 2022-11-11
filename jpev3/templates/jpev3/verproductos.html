@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.css'%}">
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.min.css'%}">
+    <title>Ver productos</title>
+</head>
+<body>
+
+    <!--navidad-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'menu' %}">JuanMellaEv3</a>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verproducto' %}">Ver Productos</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'venderproducto' %}">Vender Productos</a>
+            </li>
+        </div>
+      </nav>
+    <!--Fin Navidad-->
+
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+         <!--Titulo del detalle-->
+          <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoría</th>
+            </tr>
+          </thead>
+         <!--Detalles-->
+          <tbody>
+        <!--for para ver los productos en la lista-->
+        {% for producto in listaproducto %}
+            <tr>
+              <td>{{ producto.codigo }} </td>
+              <td>{{ producto.nombre }} </td>
+              <td>${{ producto.precio }} </td>
+              <td>{{ producto.stock }} </td>
+              <td>{{ producto.categoria.nombre }} </td>
+            </tr>
+        {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</body>
+</html>

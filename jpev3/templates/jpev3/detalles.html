@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.css'%}">
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.min.css'%}">
+    <title>Ver productos</title>
+</head>
+<body>
+
+    <!--navidad-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'menu' %}">JuanMellaEv3</a>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verproducto' %}">Ver Productos</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'venderproducto' %}">Vender Productos</a>
+            </li>
+        </div>
+      </nav>
+    <!--Fin Navidad-->
+    <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+            <!--Titulo del detalle-->
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+        
+            <!--Detalles-->
+            <tbody>
+                <tr>
+                <td>{{ retcodigo.codigo }} </td>
+                <td>{{ retcodigo.nombre }} </td>
+                <td>${{ retcodigo.precio }} </td>
+                <td>{{ retcodigo.stock }} </td>
+                <td>{{ retcodigo.categoria.nombre }} </td>
+                </tr>
+            </tbody>
+            </table>
+        <!--form que envia el id y cantidad-->
+        <form action="{% url 'confirmartotal' %}" method="post"> 
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="codproducto" hidden value="{{ retcodigo.codigo }}">
+                <label for="cantidad">Cantidad</label>
+                <input type="text" class="form-control" name="cantidad" required>
+                <p style="color:red;">*Debe ser un digito numérico y menor o igual al stock disponible*</p>
+    
+            </div>
+            <center>
+                <a href="{% url 'venderproducto' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Vender</button>
+            </center>
+            </form>
+        </div>
+    <!-- /.card-body -->
+</body>
+</html>

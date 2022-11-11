@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.css'%}">
+    <link rel="stylesheet" href="{% static 'jpev3/adminlte.min.css'%}">
+    <title>JuanMellaEv3</title>
+</head>
+<body>
+
+    <!--navidad-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'menu' %}">JuanMellaEv3</a>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verproducto' %}">Ver Productos</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'venderproducto' %}">Vender Productos</a>
+            </li>
+        </div>
+      </nav>
+    <!--Fin Navidad-->
+    
+    <!--presentacion-->
+    <center>
+        <h1>Evaluación 3</h1>
+        <br>
+        <h2>Alumno: </h2> <p>Juan Pablo Mella</p>
+        <br>
+        <h2>Profesor: </h2> <p>Pablo Vilches</p>
+      </center>
+</body>
+</html>
